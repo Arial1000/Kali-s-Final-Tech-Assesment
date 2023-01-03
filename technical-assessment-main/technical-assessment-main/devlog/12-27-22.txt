@@ -1,0 +1,291 @@
+Goals of Today:
+Choose Tasks to complete and set up and download software for tasks. Set up new repository for when I need to turn the
+assignemnt in.
+
+Today's Summary:
+First I decided to download all of the software for both the backend and the frontend incase I wanted to 
+work on both sides. After downloading Node.js I tried downloading Angular. At first I was confused because there wasn't a
+link to download it. Then, I found the installation instructinos and realized that I had to use the command prompt terminal 
+and PowerShell. After I downloaded Angular, I downloaded Postman in a similar manner. Then I 
+
+Then it came time to decide which tasks to do. At first, I wanted to do 2 frontend tasks and 2 backend tasks. However, after
+doing some research on both sides, I realized it would be easier for me to start with frontend since I have no 
+experience in web development. On Angular the Angular official website there is a tutorial for the 4 tasks for the frontend.
+For the next few days I'll follow that tutorial so I can get the hang of Angular along with its neccessary programming languages
+and then I will try to make my own application without the tutorial. 
+
+First, I needed to get Angular into VS Code. To do that I made a new angular program and then used the command "code ." . 
+To run the application I used the command "ng serve -o". I would write my tutorial code in thise application. Then in the tutorial
+I learned about displaying and editing a hero. I learned that you have to declare
+componeents in app.module.ts you also have to import them. 
+
+I also had to set up the gitHub  repository. I had used gitHub a couple times before, but it was a while ago and it was very
+basic knowledge, so I was pretty fuzzy on what to do. So I looked at the "Hello world" tutorial on GitHub for repositories 
+and I very quickly got the hang of making repositories. I also learned about pull requests and practiced with that. 
+I also learned about committs and why they are useful. GitHub helps us prevent versions overlapping and crasing into
+eachother and conflicting. I set up a new one for my assignemnt and make a new branch on it. 
+
+Links used today:
+https://angular.io/guide/setup-local#install-the-angular-cli
+https://nodejs.org/en/
+https://angular.io/guide/setup-local#create-a-workspace-and-initial-application
+https://code.visualstudio.com/docs/nodejs/angular-tutorial
+https://docs.github.com/en/get-started/quickstart/hello-world
+https://angular.io/tutorial/tour-of-heroes
+
+
+
+Code used today (for reference ONLY):
+
+   |ng new angular-tour-of-heroes
+
+   |cd angular-tour-of-heroes
+   |ng serve --open
+
+   import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css']
+})
+export class AppComponent {
+  title = 'Tour of Heroes';
+}
+
+
+|<h1>{{title}}</h1>
+
+/* Application-wide Styles */
+h1 {
+  color: #369;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 250%;
+}
+h2, h3 {
+  color: #444;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: lighter;
+}
+body {
+  margin: 2em;
+}
+body, input[type="text"], button {
+  color: #333;
+  font-family: Cambria, Georgia, serif;
+}
+button {
+  background-color: #eee;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  color: black;
+  font-size: 1.2rem;
+  padding: 1rem;
+  margin-right: 1rem;
+  margin-bottom: 1rem;
+  margin-top: 1rem;
+}
+button:hover {
+  background-color: black;
+  color: white;
+}
+button:disabled {
+  background-color: #eee;
+  color: #aaa;
+  cursor: auto;
+}
+
+/* everywhere else */
+* {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+ |ng generate component heroes
+
+ import { Component, OnInit } from '@angular/core';
+import { Hero } from '../hero';
+
+@Component({
+  selector: 'app-heroes',
+  templateUrl: './heroes.component.html',
+  styleUrls: ['./heroes.component.css']
+})
+export class HeroesComponent implements OnInit {
+  hero: Hero = {
+    id: 1,
+    name: 'Windstorm'
+  };
+
+  constructor() { }
+
+  ngOnInit(): void {
+  }
+
+}
+
+<h2>{{hero.name | uppercase}} Details</h2>
+<div><span>id: </span>{{hero.id}}</div>
+<div>
+  <label for="name">Hero name: </label>
+  <input id="name" [(ngModel)]="hero.name" placeholder="name">
+</div>
+
+
+import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms'; // <-- NgModel lives here
+
+import { AppComponent } from './app.component';
+import { HeroesComponent } from './heroes/heroes.component';
+
+@NgModule({
+  declarations: [
+    AppComponent,
+    HeroesComponent
+  ],
+  imports: [
+    BrowserModule,
+    FormsModule
+  ],
+  providers: [],
+  bootstrap: [AppComponent]
+})
+export class AppModule { }
+
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css']
+})
+export class AppComponent {
+  title = 'Tour of Heroes';
+}
+
+import { Hero } from './hero';
+
+export const HEROES: Hero[] = [
+  { id: 12, name: 'Dr. Nice' },
+  { id: 13, name: 'Bombasto' },
+  { id: 14, name: 'Celeritas' },
+  { id: 15, name: 'Magneta' },
+  { id: 16, name: 'RubberMan' },
+  { id: 17, name: 'Dynama' },
+  { id: 18, name: 'Dr. IQ' },
+  { id: 19, name: 'Magma' },
+  { id: 20, name: 'Tornado' }
+];
+
+import { Component, OnInit } from '@angular/core';
+import { Hero } from '../hero';
+import { HEROES } from '../mock-heroes';
+
+@Component({
+  selector: 'app-heroes',
+  templateUrl: './heroes.component.html',
+  styleUrls: ['./heroes.component.css']
+})
+
+export class HeroesComponent implements OnInit {
+
+  heroes = HEROES;
+  selectedHero?: Hero;
+
+  constructor() { }
+
+  ngOnInit(): void {
+  }
+
+  onSelect(hero: Hero): void {
+    this.selectedHero = hero;
+  }
+}
+
+<h2>My Heroes</h2>
+<ul class="heroes">
+  <li *ngFor="let hero of heroes">
+    <button [class.selected]="hero === selectedHero" type="button" (click)="onSelect(hero)">
+      <span class="badge">{{hero.id}}</span>
+      <span class="name">{{hero.name}}</span>
+    </button>
+  </li>
+</ul>
+
+<div *ngIf="selectedHero">
+  <h2>{{selectedHero.name | uppercase}} Details</h2>
+  <div>id: {{selectedHero.id}}</div>
+  <div>
+    <label for="hero-name">Hero name: </label>
+    <input id="hero-name" [(ngModel)]="selectedHero.name" placeholder="name">
+  </div>
+</div>
+
+/* HeroesComponent's private CSS styles */
+.heroes {
+  margin: 0 0 2em 0;
+  list-style-type: none;
+  padding: 0;
+  width: 15em;
+}
+
+.heroes li {
+  display: flex;
+}
+
+.heroes button {
+  flex: 1;
+  cursor: pointer;
+  position: relative;
+  left: 0;
+  background-color: #EEE;
+  margin: .5em;
+  padding: 0;
+  border-radius: 4px;
+  display: flex;
+  align-items: stretch;
+  height: 1.8em;
+}
+
+.heroes button:hover {
+  color: #2c3a41;
+  background-color: #e6e6e6;
+  left: .1em;
+}
+
+.heroes button:active {
+  background-color: #525252;
+  color: #fafafa;
+}
+
+.heroes button.selected {
+  background-color: black;
+  color: white;
+}
+
+.heroes button.selected:hover {
+  background-color: #505050;
+  color: white;
+}
+
+.heroes button.selected:active {
+  background-color: black;
+  color: white;
+}
+
+.heroes .badge {
+  display: inline-block;
+  font-size: small;
+  color: white;
+  padding: 0.8em 0.7em 0 0.7em;
+  background-color: #405061;
+  line-height: 1em;
+  margin-right: .8em;
+  border-radius: 4px 0 0 4px;
+}
+
+.heroes .name {
+  align-self: center;
+}
+

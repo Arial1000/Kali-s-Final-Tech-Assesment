@@ -1,0 +1,242 @@
+Today's Goals:
+Work on tutorial. Download Tech-Assignment Repository.
+
+Today's Summary:
+
+Today I opened the tech-assignment in Visual Studio Code and run angular in the frontend folder. I had never opened a
+repository in VSCode before, so I had to look up how. After I found the information on how to open it, I couldn't clone the
+repository still because the option was still greyed out on VSCode. I was puzzled. At first I assumed maybe I need to 
+download git, but it was still greyed out. So then I figured that it probably needs an extension because lots of things in 
+VSCode do not work sometimes because you need an extension. I did not know which one though. All I knew was that I needed
+something related to gitHub and cloneing repositories. After some more Googling, I found out I needed the GitHub pull request
+and issues extension. Then, I ran the Angular commands given to us in the frontend folder. 
+
+Today I continued with the Angular tutorial and learned about components. I learned that they are kind of like sections
+of the website that you build. You would make a dashboard component and a herolist component for example.
+ I learned about dislpaying the hero's details. I also learned about services in Angular. They are similar to functions and 
+ let your program do things like creating the Hero or deleting the hero and getting the hero from the backend. 
+
+ Links used today:
+ https://code.visualstudio.com/docs/sourcecontrol/github
+ https://angular.io/tutorial/tour-of-heroes
+
+ Code used today (For Reference ONLY)
+
+  |ng generate component hero-detail
+
+  import { Component, OnInit, Input } from '@angular/core';
+import { Hero } from '../hero';
+
+@Component({
+  selector: 'app-hero-detail',
+  templateUrl: './hero-detail.component.html',
+  styleUrls: ['./hero-detail.component.css']
+})
+export class HeroDetailComponent implements OnInit {
+  @Input() hero?: Hero;
+
+  constructor() { }
+
+  ngOnInit(): void {
+  }
+
+}
+
+<div *ngIf="hero">
+
+  <h2>{{hero.name | uppercase}} Details</h2>
+  <div><span>id: </span>{{hero.id}}</div>
+  <div>
+    <label for="hero-name">Hero name: </label>
+    <input id="hero-name" [(ngModel)]="hero.name" placeholder="name">
+  </div>
+
+</div>
+
+<h2>My Heroes</h2>
+
+<ul class="heroes">
+  <li *ngFor="let hero of heroes">
+    <button [class.selected]="hero === selectedHero" type="button" (click)="onSelect(hero)">
+      <span class="badge">{{hero.id}}</span>
+      <span class="name">{{hero.name}}</span>
+    </button>
+  </li>
+</ul>
+
+<app-hero-detail [hero]="selectedHero"></app-hero-detail>
+
+
+import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+
+import { AppComponent } from './app.component';
+import { HeroesComponent } from './heroes/heroes.component';
+import { HeroDetailComponent } from './hero-detail/hero-detail.component';
+
+@NgModule({
+  declarations: [
+    AppComponent,
+    HeroesComponent,
+    HeroDetailComponent
+  ],
+  imports: [
+    BrowserModule,
+    FormsModule
+  ],
+  providers: [],
+  bootstrap: [AppComponent]
+})
+export class AppModule { }
+
+ng generate service hero
+
+import { Injectable } from '@angular/core';
+
+import { Observable, of } from 'rxjs';
+
+import { Hero } from './hero';
+import { HEROES } from './mock-heroes';
+import { MessageService } from './message.service';
+
+@Injectable({
+  providedIn: 'root',
+})
+export class HeroService {
+
+  constructor(private messageService: MessageService) { }
+
+  getHeroes(): Observable<Hero[]> {
+    const heroes = of(HEROES);
+    this.messageService.add('HeroService: fetched heroes');
+    return heroes;
+  }
+}
+
+import { Injectable } from '@angular/core';
+
+@Injectable({
+  providedIn: 'root',
+})
+export class MessageService {
+  messages: string[] = [];
+
+  add(message: string) {
+    this.messages.push(message);
+  }
+
+  clear() {
+    this.messages = [];
+  }
+}
+
+import { Component, OnInit } from '@angular/core';
+
+import { Hero } from '../hero';
+import { HeroService } from '../hero.service';
+import { MessageService } from '../message.service';
+
+@Component({
+  selector: 'app-heroes',
+  templateUrl: './heroes.component.html',
+  styleUrls: ['./heroes.component.css']
+})
+export class HeroesComponent implements OnInit {
+
+  selectedHero?: Hero;
+
+  heroes: Hero[] = [];
+
+  constructor(private heroService: HeroService, private messageService: MessageService) { }
+
+  ngOnInit(): void {
+    this.getHeroes();
+  }
+
+  onSelect(hero: Hero): void {
+    this.selectedHero = hero;
+    this.messageService.add(`HeroesComponent: Selected hero id=${hero.id}`);
+  }
+
+  getHeroes(): void {
+    this.heroService.getHeroes()
+        .subscribe(heroes => this.heroes = heroes);
+  }
+}
+
+import { Component, OnInit } from '@angular/core';
+import { MessageService } from '../message.service';
+
+@Component({
+  selector: 'app-messages',
+  templateUrl: './messages.component.html',
+  styleUrls: ['./messages.component.css']
+})
+export class MessagesComponent implements OnInit {
+
+  constructor(public messageService: MessageService) {}
+
+  ngOnInit() {
+  }
+
+}
+<div *ngIf="messageService.messages.length">
+
+  <h2>Messages</h2>
+  <button type="button" class="clear"
+          (click)="messageService.clear()">Clear messages</button>
+  <div *ngFor='let message of messageService.messages'> {{message}} </div>
+
+</div>
+
+/* MessagesComponent's private CSS styles */
+h2 {
+  color: #A80000;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: lighter;
+}
+
+.clear {
+  color: #333;
+  background-color: #eee;
+  margin-bottom: 12px;
+  padding: 1rem;
+  border-radius: 4px;
+  font-size: 1rem;
+}
+.clear:hover {
+  color: white;
+  background-color: #42545C;
+}
+
+import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { AppComponent } from './app.component';
+import { HeroesComponent } from './heroes/heroes.component';
+import { HeroDetailComponent } from './hero-detail/hero-detail.component';
+import { MessagesComponent } from './messages/messages.component';
+
+@NgModule({
+  declarations: [
+    AppComponent,
+    HeroesComponent,
+    HeroDetailComponent,
+    MessagesComponent
+  ],
+  imports: [
+    BrowserModule,
+    FormsModule
+  ],
+  providers: [
+    // no need to place any providers due to the `providedIn` flag...
+  ],
+  bootstrap: [ AppComponent ]
+})
+export class AppModule { }
+
+
+<h1>{{title}}</h1>
+<app-heroes></app-heroes>
+<app-messages></app-messages>
