@@ -3,6 +3,12 @@ Finsih Devlog, essays, and upload work to repository and turn in alll work. Merg
 
 
 
+Today's Summary:
+I finished my essays and merged my work with the code given to us. I learned how to upload a an angular app from VSCode to gitHub using a video tutorial.
+I ran into a problem where the remote origin aleady existed, however, I had never set the origin name before. I used the command "git remote -v"
+to find out what the current origin name is. This let me know that it was still tied to the Cyber4All repo url. 
+I did some Googling and found out how to get rid of the old origin name. I used the command "git remote remove origin" and replaced it with the url of my new repository. I also ran into an issue were there was a git error: failed to push some refs to remote. I found that this could easily be fixed with a command like "git pull --rebase" and "git push".
+
 
 
 
@@ -27,3 +33,9 @@ running properly. With programming thing always come together in the end. There'
 Thank you again for the opportunity and I hope you had a wonderful holiday! I look forward to hearing from you.
 
 -Kali Ferguson
+
+
+Links Used:
+https://www.cloudbees.com/blog/remote-origin-already-exists-error
+https://stackoverflow.com/questions/24114676/git-error-failed-to-push-some-refs-to-remote
+https://www.youtube.com/watch?v=fRV53m7kMoQ&ab_channel=ErvisTrupja
