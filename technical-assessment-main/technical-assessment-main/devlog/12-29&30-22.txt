@@ -37,7 +37,7 @@ https://www.youtube.com/watch?v=0DzDqtcxnz0&list=PL4cUxeGkcC9gUgr39Q_yD6v-bSyMwK
 
 Code created today (My Code):
 
-HTML: 
+HTML code in app.component.html
 
 
 <router-outlet></router-outlet>
@@ -76,7 +76,7 @@ HTML:
 </html>
 
 
-CSS:
+CSS in app.component.css
 
 /** Author| Kali Ferguson */
 
