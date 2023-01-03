@@ -1,0 +1,28 @@
+/** Author| Kali Ferguson */
+
+body{
+    background-color: white;
+    margin: 0;
+}
+
+#header{
+    background-color: #6cf;
+    color : black;
+    text-align: center;
+}
+
+#container{
+    background-color: white;
+    width: 800px;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#nav{
+    background-color: white;
+    width: 180px;
+    text-align: center;
+    margin-left:auto;
+    margin-right: auto;
+}
