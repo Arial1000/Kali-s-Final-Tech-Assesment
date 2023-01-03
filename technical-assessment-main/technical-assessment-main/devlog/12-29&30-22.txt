@@ -1,0 +1,108 @@
+Today's Goals:
+Watch Tutorials on Youtube about HTML, CSS, and Type Script. Create own version of frontend tasks.
+
+Today's Summary:
+
+While the tutorials on Angular were helpful with seeing the big picture and what the assignment is asking of me and what
+the program should look like when it is done. The tutorial was definitely made for someone who is already fluent in HTML,
+CSS, and TypeScript. I knew almost nothing about any of those languages. These vidoes definitely helped me get a basic grasp
+for each language. I learned that you use <h1><h1/> for headings and <p><p/> for pargraphs. You use<img> for images. Html is
+used to define content and css styles content. <div> defines divisions in your website or app. You have to link HTML and CSS 
+together using 
+
+      <link rel="stylesheet" type="text/css" href="app.component.css"/>
+
+With CSS I learned about changing the font and color of the text and the alignment of the text.
+
+I started on tutorials for TypeScript, but out of the three languages TypeScript is by far the most complex. I understood a 
+little more about creating functions in TypeScript and how variables in TypeScript don't change type. 
+
+Then, I started coding my version of the front end. I only used what I fully grasped and resources that helped me to actually
+understand what to do. Although the Angular tutorial was nice and straight forward, it never explained things on a level
+where I could recreate the same app independently. This also hinders my own creativity and problem solving process. 
+It also doesnt allow me to show what I learned or know for the tech assesment. So, I decided to do my own from the knowledge
+I was able to grasp within a week. I created a title and a navigation page with links. I understand how the routing is 
+supposed to work and I tried to get it to work, but unfortunately I ran out of time to solve why it is not working. However,
+if given more time, I am positive I would be able to figure out why it wasn't working. Note: I was using a sepparate Angular
+application all together to run my work so my code could compile without conflicting with the given code. I will merge them
+together later. 
+
+Links I used today: 
+https://angular.io/tutorial/tour-of-heroes
+https://www.youtube.com/watch?v=bWPMSSsVdPk&t=516s&ab_channel=JakeWright
+https://www.youtube.com/results?search_query=css+in+12+minutes
+https://www.youtube.com/watch?v=2pZmKW9-I_k&list=PL4cUxeGkcC9gUgr39Q_yD6v-bSyMwKPUI&ab_channel=TheNetNinja
+https://www.youtube.com/watch?v=iTZ1-85I77c&list=PL4cUxeGkcC9gUgr39Q_yD6v-bSyMwKPUI&index=2&ab_channel=TheNetNinja
+https://www.youtube.com/watch?v=0DzDqtcxnz0&list=PL4cUxeGkcC9gUgr39Q_yD6v-bSyMwKPUI&index=3&ab_channel=TheNetNinja
+
+Code created today (My Code):
+
+HTML code in app.component.html
+
+
+<router-outlet></router-outlet>
+
+
+<html>
+  <head>
+      <title>Heroes</title>
+      <link rel="stylesheet" type="text/css" href="app.component.css"/>
+
+
+  <!-- Author| Kali Ferguosn-->
+</head>
+<body>
+  <div id="container">
+    <div id = "header">
+      <h1> Heroes Dashboard</h1>
+
+    </div>
+    <div id = "nav">
+      <h3>Navigation</h3>
+      <ul>
+        <li><a class= "selected" href="">Dashboard</a></li>
+        <li><a href="">Create a Hero</a></li>
+        <li><a href ="">Deleter a Hero</a></li>
+        <li><a href ="">Update a Hero</a></li>
+        <li> <a href ="">Delete a Hero</a></li>
+        
+      </ul>
+
+    </div>
+  </div>
+  
+</body>
+
+</html>
+
+
+CSS in app.component.css
+
+/** Author| Kali Ferguson */
+
+body{
+    background-color: white;
+    margin: 0;
+}
+
+#header{
+    background-color: #6cf;
+    color : black;
+    text-align: center;
+}
+
+#container{
+    background-color: white;
+    width: 800px;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#nav{
+    background-color: white;
+    width: 180px;
+    text-align: center;
+    margin-left:auto;
+    margin-right: auto;
+}

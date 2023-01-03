@@ -1,0 +1,11 @@
+Goals of the Day:
+Review Tech Assesment and understand what is being asked of me.
+
+Summary of Today:
+
+Today I read through the documents and files given to us on gitHub so I can plan ahead and figure out what I need to do. After
+reading all the documents I realized I have 0 experience in anyhting listed in the assignments besides command line and VS Code.
+I have 0 experience in HTML, CSS, Angular, TypeScript, Postman and have only minor experience with GitHub, so thsi could feel
+like an uphill battle. However, I know that not all hope is lost because I am creative and very resourceful. One concern I have, 
+however, is the limited amount of time I would have to figure out something so foreign and new to me. 
+
